@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { User } from '../type/userTypes'
 import { useUserStore } from './userStore'
 
+// Define filterStore shape and actions
 type FilterState = {
   filteredUsers: User[]
   searchUsers: (searchTerm: string) => void
@@ -13,7 +14,10 @@ type FilterState = {
 }
 
 export const useFilterStore = create<FilterState>((set, get) => ({
+  // Initializes with the users from the main user store
   filteredUsers: useUserStore.getState().users,
+  
+  // Filters users based on name or email
   searchUsers: (searchTerm) => {
     const users = useUserStore.getState().users
     set({
@@ -24,7 +28,10 @@ export const useFilterStore = create<FilterState>((set, get) => ({
       ),
     })
   },
+
   curentFilter: 'All',
+
+  // Applies filter based on membership status
   filterUsers: (filter) => {
     const users = useUserStore.getState().users
 
@@ -41,7 +48,10 @@ export const useFilterStore = create<FilterState>((set, get) => ({
       })
     }
   },
+
   currentSort: 'All',
+
+  // Sorts users based on criteria such as name, age and membership status
   sortUsers: (sort) => {
     const users = get().filteredUsers
 
@@ -77,6 +87,8 @@ export const useFilterStore = create<FilterState>((set, get) => ({
 
     set({ currentSort: sort })
   },
+
+  // Resets filters and sorting to their default state
   clearFilteredUsers: () =>
     set({
       filteredUsers: useUserStore.getState().users,
