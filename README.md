@@ -1,6 +1,6 @@
 # USER MANAGEMENT - TEST
 
-Live Demo: [User Management App](https://user-management-test.vercel.app/)
+Live Demo: [User Management App](https://user-management-test-steel.vercel.app/)
 
 Simple User Management App built with React, Typesccript, Zustand, Radix UI, and Tailwind CSS. Follow the instructions below to set up and run the project locally.
 
